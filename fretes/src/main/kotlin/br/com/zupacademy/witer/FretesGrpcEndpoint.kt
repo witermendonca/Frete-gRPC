@@ -41,7 +41,7 @@ class FretesGrpcEndpoint : FretesServiceGrpc.FretesServiceImplBase() {
             //Simulação de erro
             if (valor > 100.0) throw IllegalStateException("Erro inesperado ao executar lógica de negócio.")
         } catch (e: Exception) {
-            responseObserver?.onError(Status.INVALID_ARGUMENT
+            responseObserver?.onError(Status.INTERNAL
                 .withDescription(e.message)
                 .withCause(e)
                 .asRuntimeException()
