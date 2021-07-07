@@ -33,7 +33,7 @@ class CalculadoraFretesController(@Inject val grpcClient: FretesServiceGrpc.Fret
                 throw HttpStatusException(HttpStatus.BAD_REQUEST, description)
             }
 
-            if (statusCode == Status.Code.PERMISSION_DENIED){
+            if (statusCode == Status.Code.PERMISSION_DENIED) {
 
                 val statusProto = StatusProto.fromThrowable(e)
                 if (statusProto == null) throw HttpStatusException(HttpStatus.UNAUTHORIZED, description)
@@ -41,9 +41,6 @@ class CalculadoraFretesController(@Inject val grpcClient: FretesServiceGrpc.Fret
                 val anyDetails: Any = statusProto.detailsList.get(0)
                 val erroDetails = anyDetails.unpack(ErrorDetails::class.java)
                 throw HttpStatusException(HttpStatus.UNAUTHORIZED, "${erroDetails.code}: ${erroDetails.message}")
-
-
-
 
             }
 

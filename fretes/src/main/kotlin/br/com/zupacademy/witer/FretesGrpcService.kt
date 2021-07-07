@@ -10,7 +10,7 @@ import javax.inject.Singleton
 import kotlin.random.Random
 
 @Singleton
-class FretesGrpcEndpoint : FretesServiceGrpc.FretesServiceImplBase() {
+class FretesGrpcService : FretesServiceGrpc.FretesServiceImplBase() {
 
     private val logger = LoggerFactory.getLogger(this.javaClass)
 
